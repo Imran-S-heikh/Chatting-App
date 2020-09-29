@@ -1,13 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { RecoilRoot, useRecoilValue } from 'recoil';
+import Login from './pages/Login.page';
+import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme } from '@material-ui/core';
+import { themeState } from './recoil/atoms';
+
+
 
 function App() {
+
+  const themeOption = useRecoilValue(themeState);
+  
+  const theme = unstable_createMuiStrictModeTheme({
+    palette: {
+      type: themeOption.mode,
+      primary: {
+        main: themeOption.color
+      }
+    }
+  });
+
   return (
-    <div className="App">
-      This is the chatting app
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <div>
+        <Login />
+      </div>
+    </ThemeProvider>
   );
 }
 
-export default App;
+export default () => (
+  <RecoilRoot>
+    <App />
+  </RecoilRoot>
+);
