@@ -4,6 +4,7 @@ import { RecoilRoot, useRecoilValue } from 'recoil';
 import Login from './pages/Login.page';
 import { CssBaseline, ThemeProvider, unstable_createMuiStrictModeTheme } from '@material-ui/core';
 import { themeState } from './recoil/atoms';
+import Signup from './pages/Signup.page';
 
 
 
@@ -24,7 +25,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline/>
       <div>
-        <Login />
+        {/* <Login /> */}
+        <Signup/>
       </div>
     </ThemeProvider>
   );
